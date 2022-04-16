@@ -21,6 +21,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'phone',
+        'verification_code',
+        'account_state',
     ];
 
     /**
@@ -41,4 +44,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function Cashiers(){
+        return $this->hasMany(Cashier::class);
+    }
+    public function payments(){
+        return $this->hasMany(payments::class);
+    }
+    public function cards(){
+        return $this->hasMany(Card::class);
+    }
 }
